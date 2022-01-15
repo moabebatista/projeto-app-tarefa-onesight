@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Components/Header';
+import TasksList from './Components/TasksList'
 import UserContext from './Contexts/UserContext';
 
 function App() {
@@ -8,8 +9,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header></Header>
+      <Header />
       <UserContext.Provider value={valuesProvider}>
+        <main className="container--main">
+          <TasksList />
+        </main>
       </UserContext.Provider>
     </div>
   );

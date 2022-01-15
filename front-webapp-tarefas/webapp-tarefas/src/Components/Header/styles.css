@@ -7,7 +7,7 @@
     background: linear-gradient(91.26deg, #05EDE3 0%, #3A9FF1 97.77%);
     padding: 0 50px;
 }
-.container--header h1 {
+.container--header h1, img {
     margin-top: -60px;
     color: #ffffff;
     text-shadow: #353333 0.1em 0.1em 0.2em
