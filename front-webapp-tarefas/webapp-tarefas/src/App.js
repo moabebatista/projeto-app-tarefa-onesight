@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Components/Header';
-import TasksList from './Components/TasksList'
+import TasksList from './Components/TasksList';
 import UserContext from './Contexts/UserContext';
 
 function App() {

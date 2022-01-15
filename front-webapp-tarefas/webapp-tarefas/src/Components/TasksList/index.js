@@ -1,8 +1,11 @@
 import './styles.css';
+import TableHeader from './TableHeader'
 
 function TasksList() {
     return (
-        <h1>Lista de Tarefas</h1>
+        <div>
+            <TableHeader />
+        </div>
     )
 }
 

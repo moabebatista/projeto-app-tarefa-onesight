@@ -4,8 +4,18 @@
   box-sizing: border-box;
 }
 .container--main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #ffffff;
   border-radius: 60px 60px 0px 0px;
   height: calc(100vh  - 140px);
   margin-top: -80px;
+}
+button {
+  cursor: pointer;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
