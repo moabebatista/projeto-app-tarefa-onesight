@@ -13,6 +13,9 @@ function App() {
       <UserContext.Provider value={valuesProvider}>
         <main className="container--main">
           <TasksList />
+          <button className="btn-insert-task">
+            Adicionar Tarefa
+          </button>
         </main>
       </UserContext.Provider>
     </div>
