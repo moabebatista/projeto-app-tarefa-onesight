@@ -25,6 +25,8 @@ class TasksController {
           return res.status(400).json("Falha ao criar uma tarefa");
         }
       }
+
+      
 }
 
 module.exports = new TasksController();
