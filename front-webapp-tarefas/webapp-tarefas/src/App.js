@@ -17,13 +17,13 @@ function App() {
       <Header />
       <UserContext.Provider value={valuesProvider}>
         <main className="container--main">
+        <button 
+          className="btn-insert-task"
+          onClick={() => setOpen(true)}
+        >
+          Adicionar Tarefa
+        </button>
           <TasksList />
-          <button 
-            className="btn-insert-task"
-            onClick={() => setOpen(true)}
-          >
-            Adicionar Tarefa
-          </button>
         </main>
         {open && <ModalStorage />}
       </UserContext.Provider>

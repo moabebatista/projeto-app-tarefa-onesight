@@ -14,6 +14,7 @@
   border-radius: 60px 60px 0px 0px;
   height: calc(100vh  - 140px);
   margin-top: -80px;
+  padding-top: 20px;
 }
 button {
   cursor: pointer;
@@ -27,8 +28,8 @@ button {
   border-radius: 5px;
   height: 42px;
   width: 130px;
-  margin-top: 20px;
-  margin-left: 550px;
+  margin-right: 670px;
+  margin-bottom: 20px;
   color: #ffffff;
   
   font-family: 'Rubik', sans-serif;

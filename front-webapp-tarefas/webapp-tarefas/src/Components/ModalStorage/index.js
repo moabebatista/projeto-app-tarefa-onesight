@@ -1,7 +1,10 @@
 import './styles.css';
 import closeIcon from '../../assets/close-icon.svg'
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import UserContext from '../../Contexts/UserContext'
+import InputMask from 'react-input-mask';
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale';
 
 const defaultValuesForm = {
     description: '',
@@ -14,8 +17,44 @@ function ModalStorage () {
 
     const [form, setForm] = useState(defaultValuesForm);
 
+    useEffect(() => {
+        if(open) {
+            setForm(defaultValuesForm);
+        }
+    }, [open])
+
     function handleChange (target) {
         setForm({...form, [target.name]: target.value});
+    }
+
+    async function handleSubmit (event) {
+        event.preventDefault();
+
+        const [day, month, year] = form.date.split('/');
+
+        const selectedDate = new Date(`${month}/${day}/${year}`);
+
+        const body = {
+            date: selectedDate,
+            week_day: format(selectedDate, 'eee', {
+                locale: ptBR
+            }),
+            description: form.description,
+            status: form.status
+        }
+
+        const response = await fetch('http://localhost:3334/tasks', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        await response.json();
+
+        setOpen(false)
+
     }
 
     return (
@@ -28,7 +67,7 @@ function ModalStorage () {
                     onClick={() => setOpen(false)}
                 />
                 <h3>Adicionar Tarefa</h3>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div>
                             <label>Descrição</label>
                             <input
@@ -40,7 +79,8 @@ function ModalStorage () {
                         </div>
                         <div>
                             <label>Data</label>
-                            <input
+                            <InputMask
+                                mask="99/99/9999"
                                 type="text"
                                 name="date" 
                                 value={form.date}
