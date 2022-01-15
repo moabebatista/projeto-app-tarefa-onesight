@@ -52,6 +52,21 @@ class TasksController {
           return res.status(400).json("Falha ao atualizar a tarefa");
         }
       }
+
+      async updateOnePropertie(req, res) {
+        try {
+          const { id } = req.params;
+          const { body } = req;
+    
+          const response = await api.patch(`/tasks/${id}`, {
+            ...body
+          });
+    
+          return res.status(200).json(response.data);
+        } catch (error) {
+          return res.status(400).json("Falha ao atualizar a tarefa");
+        }
+      }
 }
 
 module.exports = new TasksController();
