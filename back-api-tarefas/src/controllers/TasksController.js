@@ -30,11 +30,26 @@ class TasksController {
         try {
           const { id } = req.params;
     
-          const response = await api.delete(`/transactions/${id}`);
+          const response = await api.delete(`/tasks/${id}`);
     
           return res.status(200).json(response.data);
         } catch (error) {
-          return res.status(400).json("Falha ao deletar a transação");
+          return res.status(400).json("Falha ao deletar a tarefa");
+        }
+      }
+
+      async update(req, res) {
+        try {
+          const { id } = req.params;
+          const { body } = req;
+    
+          const response = await api.put(`/tasks/${id}`, {
+            ...body
+          });
+    
+          return res.status(200).json(response.data);
+        } catch (error) {
+          return res.status(400).json("Falha ao atualizar a tarefa");
         }
       }
 }
