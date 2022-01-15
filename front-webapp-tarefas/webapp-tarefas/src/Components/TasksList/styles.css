@@ -1,0 +1,19 @@
+.table {
+    width: 800px;
+}
+.table-body {
+    display: flex;
+    flex-direction: column;
+}
+.table-line {
+    display: flex;
+    justify-content: space-between;
+}
+.line-itens {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 55px;
+    border-bottom: 1px solid #E0E0E0;
+}
