@@ -8,7 +8,7 @@ class TasksController {
           return res.status(200).json(response.data);
     
         } catch (error) {
-          return res.status(400).json("Falha ao listar as tarefa.");
+          return res.status(400).json("Falha ao listar as tarefas.");
         }
       }
 
@@ -65,6 +65,18 @@ class TasksController {
           return res.status(200).json(response.data);
         } catch (error) {
           return res.status(400).json("Falha ao atualizar a tarefa");
+        }
+      }
+
+      async detailOne(req, res) {
+        try {
+          const { id } = req.params;
+    
+          const response = await api.get(`/tasks/${id}`);
+    
+          return res.status(200).json(response.data);
+        } catch (error) {
+          return res.status(400).json("Falha ao detalhar a tarefa");
         }
       }
 }
