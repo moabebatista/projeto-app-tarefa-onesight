@@ -18,7 +18,8 @@ function App() {
     currentTask, 
     setCurrentTask,
     reload,
-    setReload
+    setReload,
+    handleOrderTasks
   }
 
   useEffect(() => {
@@ -40,6 +41,10 @@ function App() {
       setCurrentTask(false);
     }
   },[open])
+
+  function handleOrderTasks (newTasks) {
+    setTasks(newTasks);
+  }
 
   async function handleLoadTasks () {
     const response = await fetch('http://localhost:3334/tasks', {

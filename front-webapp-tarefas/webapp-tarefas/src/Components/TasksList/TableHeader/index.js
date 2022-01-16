@@ -1,11 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ArrowDown from '../../../assets/arrow-down.svg';
 import ArrowUp from '../../../assets/arrow-up.svg';
 import './styles.css';
+import { orderColumnAsc, orderColumnDesc } from './utils';
 
-function TableHeader () {
+function TableHeader ({ tasks, handleOrderTasks }) {
     const [filter, setFilter] = useState('date');
     const [order, setOrder] = useState('asc');
+
+    useEffect(() => {
+        if(order === 'desc') {
+            orderAllTasksByDesc();
+            return;
+        }
+
+        orderAllTasksByAsc();
+
+    },[filter, order]);
+
+    function orderAllTasksByAsc () {
+        const localTask = [...tasks];
+        localTask.sort((a, b) => orderColumnAsc(a, b, filter));
+
+        handleOrderTasks(localTask);
+    }
+
+    function orderAllTasksByDesc () {
+        const localTask = [...tasks];
+        localTask.sort((a, b) => orderColumnDesc(a, b, filter));
+
+        handleOrderTasks(localTask);
+    }
 
     function handleChangeFilter(type) {
         if(filter === type) {

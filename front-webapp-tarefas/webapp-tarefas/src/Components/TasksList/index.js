@@ -13,7 +13,8 @@ function TasksList() {
         tasks, 
         setCurrentTask,
         reload,
-        setReload
+        setReload,
+        handleOrderTasks
     } = useContext(UserContext);
 
     const [idItemDelete, setIdItemDelete] = useState(null);
@@ -28,7 +29,10 @@ function TasksList() {
 
     return (
         <div className="table">
-            <TableHeader />
+            <TableHeader 
+                tasks={tasks}
+                handleOrderTasks={handleOrderTasks} 
+            />
             <div className="table-body">
                 {tasks.map((item) => (
                     <div className="table-line" key={item.id}>
