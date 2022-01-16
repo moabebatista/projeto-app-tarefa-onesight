@@ -47,3 +47,18 @@ button {
   background: linear-gradient(91.26deg, #FA8C10 0%, #FF57D3 0%);
   color: #000000;
 }
+
+@media screen and (max-width: 768px) {
+  .btn-insert-task {
+    margin-right: 470px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .btn-insert-task {
+    margin-right: 215px;
+    height: 30px;
+    width: 80px;
+    font-size: 8px;
+  }
+}

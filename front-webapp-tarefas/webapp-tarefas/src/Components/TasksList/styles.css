@@ -27,3 +27,23 @@
 .action-button {
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+    .table {
+        width: 600px;
+    }
+}
+@media screen and (max-width: 375px) {
+    .table {
+        width: 300px;
+    }
+    .line-itens {
+        height: 25px;
+        font-size: 8px;
+        line-height: 11px;
+    }
+    .action-button {
+        width: 15px;
+        height: 15px;
+    }
+}

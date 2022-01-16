@@ -11,13 +11,19 @@ function TasksList() {
     
     const { 
         tasks, 
-        setCurrentTask
+        setCurrentTask,
+        reload,
+        setReload
     } = useContext(UserContext);
 
     const [idItemDelete, setIdItemDelete] = useState(null);
 
-    function handleDeleteItem () {
-        console.log(idItemDelete)
+    async function handleDeleteItem () {
+        await fetch(`http://localhost:3334/tasks/${idItemDelete}`, {
+            method: 'DELETE'
+        });
+        setIdItemDelete(null);
+        setReload(!reload);
     }
 
     return (

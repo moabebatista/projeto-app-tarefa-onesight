@@ -7,7 +7,8 @@ import ModalStorage from './Components/ModalStorage'
 function App() {
   const [open, setOpen] = useState(false);
   const [tasks, setTasks] = useState([]);
-  const [currentTask, setCurrentTask] = useState(false)
+  const [currentTask, setCurrentTask] = useState(false);
+  const [reload, setReload] = useState(false)
 
   const valuesProvider = {
     open, 
@@ -15,12 +16,18 @@ function App() {
     tasks, 
     setTasks,
     currentTask, 
-    setCurrentTask
+    setCurrentTask,
+    reload,
+    setReload
   }
 
   useEffect(() => {
+    handleLoadTasks();
+  },[reload])
+
+  useEffect(() => {
     if(currentTask) {
-      setOpen(true);
+      return setOpen(true);
     }
   },[currentTask])
 
