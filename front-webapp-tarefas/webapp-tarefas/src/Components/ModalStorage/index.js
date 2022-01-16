@@ -9,15 +9,14 @@ import './styles.css';
 const defaultValuesForm = {
     description: '',
     date: '',
-    status: 'Fazer'
+    status: ''
 }
 
 function ModalStorage () {
     const { 
         open, 
         setOpen,
-        currentTask,
-        setCurrentTask 
+        currentTask
     } = useContext(UserContext);
 
     const [form, setForm] = useState(defaultValuesForm);
@@ -97,7 +96,7 @@ function ModalStorage () {
                     alt="close icon" 
                     onClick={() => setOpen(false)}
                 />
-                <h3>Adicionar Tarefa</h3>
+                <h3>{!currentTask ? "Adicionar" : "Editar"} Tarefa</h3>
                     <form onSubmit={handleSubmit}>
                         <div>
                             <label>Descrição</label>
@@ -121,6 +120,7 @@ function ModalStorage () {
                         <div>
                             <label>Status</label>
                             <input
+                                placeholder="Fazer, Fazendo ou Feito?"
                                 type="text"
                                 name="status" 
                                 value={form.status}

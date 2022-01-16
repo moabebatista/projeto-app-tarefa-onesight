@@ -6,6 +6,7 @@ import './styles.css';
 import TableHeader from './TableHeader';
 import { formatToDate, capitalizeWord } from '../../utils/formater_utils'
 import ConfirmChoose from '../ConfrimChoose';
+import { colorStatus } from './utils';
 
 function TasksList() {
     
@@ -45,7 +46,10 @@ function TasksList() {
                     <div className="line-itens">
                         {item.description}   
                     </div>
-                    <div className="line-itens">
+                    <div 
+                        className="line-itens"
+                        style={ colorStatus(item.status) }
+                    >
                         {item.status}   
                     </div>
                     <div className="line-itens cursor-pointer">
