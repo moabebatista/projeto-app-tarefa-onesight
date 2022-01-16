@@ -1,31 +1,38 @@
+import { useContext } from 'react';
+import deleteIcon from '../../assets/delete-icon.svg';
+import editIcon from '../../assets/edit-icon.svg';
+import UserContext from '../../Contexts/UserContext';
 import './styles.css';
 import TableHeader from './TableHeader';
-import deleteIcon from '../../assets/delete-icon.svg';
-import editIcon from '../../assets/edit-icon.svg'
+import { formatToDate, capitalizeWord } from '../../utils/formater_utils'
 
 function TasksList() {
+    
+    const { tasks } = useContext(UserContext);
     return (
         <div className="table">
             <TableHeader />
             <div className="table-body">
-                <div className="table-line">
+                {tasks.map((item) => (
+                    <div className="table-line" key={item.id}>
                     <div className="line-itens">
-                        01/02/2022   
+                        {formatToDate(item.date)}   
                     </div>
                     <div className="line-itens">
-                        Terça   
+                        {capitalizeWord(item.week_day)}   
                     </div>
                     <div className="line-itens">
-                        Lavar o carro   
+                        {item.description}   
                     </div>
                     <div className="line-itens">
-                        Fazer   
+                        {item.status}   
                     </div>
                     <div className="line-itens cursor-pointer">
                         <img src={editIcon} alt="edit icon" />
                         <img src={deleteIcon} alt="delete icon" />   
                     </div>
                 </div>
+                ))}
             </div>
         </div>
     )

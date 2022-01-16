@@ -1,10 +1,10 @@
-import './styles.css';
-import closeIcon from '../../assets/close-icon.svg'
-import { useState, useContext, useEffect } from 'react';
-import UserContext from '../../Contexts/UserContext'
-import InputMask from 'react-input-mask';
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { useContext, useEffect, useState } from 'react';
+import InputMask from 'react-input-mask';
+import closeIcon from '../../assets/close-icon.svg';
+import UserContext from '../../Contexts/UserContext';
+import './styles.css';
 
 const defaultValuesForm = {
     description: '',
