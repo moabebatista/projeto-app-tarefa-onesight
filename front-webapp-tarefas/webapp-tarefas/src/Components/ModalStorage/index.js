@@ -41,6 +41,26 @@ function ModalStorage () {
         setForm({...form, [target.name]: target.value});
     }
 
+    async function updateTask (body) {
+        return await fetch(`http://localhost:3334/tasks/${currentTask.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+    }
+
+    async function registerTask (body) {
+        return await fetch('http://localhost:3334/tasks', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+    }
+
     async function handleSubmit (event) {
         event.preventDefault();
 
@@ -57,17 +77,14 @@ function ModalStorage () {
             status: form.status
         }
 
-        const response = await fetch('http://localhost:3334/tasks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        });
+        if(currentTask) {
+            await updateTask(body);
+            setOpen(false);
+            return;
+        }
 
-        await response.json();
-
-        setOpen(false)
+        await registerTask(body);
+        setOpen(false);
 
     }
 
