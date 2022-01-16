@@ -4,13 +4,19 @@ function ConfirmChoose ({ show, setClose, message, handleConfirm }) {
     return (
         <>
             {show &&
-                <div>
-                    <div></div>
+                <div className="container-confirm">
+                    <div className="arrow-up"></div>
                     <span>{message}</span>
-                    <button onClick={() => handleConfirm()}>
+                    <button 
+                        className="btn-actions-confirm blue"
+                        onClick={() => handleConfirm()}
+                    >
                         Sim
                     </button>
-                    <button onClick={() => setClose()}>
+                    <button 
+                        className="btn-actions-confirm red"
+                        onClick={() => setClose()}
+                        >
                         Não
                     </button>
                 </div>

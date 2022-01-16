@@ -22,6 +22,7 @@
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
+    position: relative;
 }
 .action-button {
     cursor: pointer;
