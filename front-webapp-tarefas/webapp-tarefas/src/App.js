@@ -7,17 +7,32 @@ import ModalStorage from './Components/ModalStorage'
 function App() {
   const [open, setOpen] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [currentTask, setCurrentTask] = useState(false)
 
   const valuesProvider = {
     open, 
     setOpen,
     tasks, 
-    setTasks
+    setTasks,
+    currentTask, 
+    setCurrentTask
   }
 
   useEffect(() => {
-    handleLoadTasks();
-  },[])
+    if(currentTask) {
+      setOpen(true);
+    }
+  },[currentTask])
+
+  useEffect(() => {
+    if(!open) {
+      handleLoadTasks();
+    }
+
+    if(!open && currentTask) {
+      setCurrentTask(false);
+    }
+  },[open])
 
   async function handleLoadTasks () {
     const response = await fetch('http://localhost:3334/tasks', {

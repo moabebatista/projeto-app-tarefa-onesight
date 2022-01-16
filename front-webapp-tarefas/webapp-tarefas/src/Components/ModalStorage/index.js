@@ -13,15 +13,29 @@ const defaultValuesForm = {
 }
 
 function ModalStorage () {
-    const { open, setOpen } = useContext(UserContext);
+    const { 
+        open, 
+        setOpen,
+        currentTask,
+        setCurrentTask 
+    } = useContext(UserContext);
 
     const [form, setForm] = useState(defaultValuesForm);
 
     useEffect(() => {
-        if(open) {
+        if(open && !currentTask) {
             setForm(defaultValuesForm);
+            return
         }
-    }, [open])
+
+        if(currentTask) {
+            setForm({
+                date: format(new Date(currentTask.date), 'dd/MM/yyyy'),
+                description: currentTask.description,
+                status: currentTask.status
+            })
+        }
+    },[currentTask, open])
 
     function handleChange (target) {
         setForm({...form, [target.name]: target.value});

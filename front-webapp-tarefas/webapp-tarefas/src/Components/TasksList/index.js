@@ -8,7 +8,15 @@ import { formatToDate, capitalizeWord } from '../../utils/formater_utils'
 
 function TasksList() {
     
-    const { tasks } = useContext(UserContext);
+    const { 
+        tasks, 
+        setCurrentTask
+    } = useContext(UserContext);
+
+    function handleDeleteItem (item) {
+
+    }
+
     return (
         <div className="table">
             <TableHeader />
@@ -28,8 +36,18 @@ function TasksList() {
                         {item.status}   
                     </div>
                     <div className="line-itens cursor-pointer">
-                        <img src={editIcon} alt="edit icon" />
-                        <img src={deleteIcon} alt="delete icon" />   
+                        <img 
+                            src={editIcon} 
+                            alt="edit icon"
+                            className="action-button"
+                            onClick={() => setCurrentTask(item)} 
+                        />
+                        <img 
+                            src={deleteIcon} 
+                            alt="delete icon"
+                            className="action-button"
+                            onClick={() => handleDeleteItem(item)}  
+                        />   
                     </div>
                 </div>
                 ))}
