@@ -1,10 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import deleteIcon from '../../assets/delete-icon.svg';
 import editIcon from '../../assets/edit-icon.svg';
 import UserContext from '../../Contexts/UserContext';
 import './styles.css';
 import TableHeader from './TableHeader';
 import { formatToDate, capitalizeWord } from '../../utils/formater_utils'
+import ConfirmChoose from '../ConfrimChoose';
 
 function TasksList() {
     
@@ -13,8 +14,10 @@ function TasksList() {
         setCurrentTask
     } = useContext(UserContext);
 
-    function handleDeleteItem (item) {
+    const [idItemDelete, setIdItemDelete] = useState(null);
 
+    function handleDeleteItem () {
+        console.log(idItemDelete)
     }
 
     return (
@@ -46,7 +49,13 @@ function TasksList() {
                             src={deleteIcon} 
                             alt="delete icon"
                             className="action-button"
-                            onClick={() => handleDeleteItem(item)}  
+                            onClick={() => setIdItemDelete(item.id)}  
+                        />
+                        <ConfirmChoose 
+                            show={item.id === idItemDelete}
+                            setClose={() => setIdItemDelete(null)}
+                            message='Apagar item?'
+                            handleConfirm={() => handleDeleteItem()}
                         />   
                     </div>
                 </div>
